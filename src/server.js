@@ -1,4 +1,4 @@
-import uri from 'urijs';
+//import uri from 'urijs';
 import WebSocket from './websocket';
 import EventTarget from './event-target';
 import networkBridge from './network-bridge';
@@ -14,13 +14,24 @@ class Server extends EventTarget {
   */
   constructor(url) {
     super();
-    this.url = uri(url).toString();
+    this.url = url; //uri(url).toString();
     const server = networkBridge.attachServer(this, this.url);
 
     if (!server) {
       this.dispatchEvent(createEvent({ type: 'error' }));
       throw new Error('A mock server is already listening on this url');
     }
+  }
+
+  start() {
+    // TODO attach to window
+    
+  }
+
+  stop() {
+
+    // TODO remove from window
+    networkBridge.reset();
   }
 
   /*

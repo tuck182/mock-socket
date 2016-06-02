@@ -1,4 +1,4 @@
-import uri from 'urijs';
+//import uri from 'urijs';
 import delay from './helpers/delay';
 import EventTarget from './event-target';
 import networkBridge from './network-bridge';
@@ -23,7 +23,7 @@ class WebSocket extends EventTarget {
     }
 
     this.binaryType = 'blob';
-    this.url = uri(url).toString();
+    this.url = url; // uri(url).toString();
     this.readyState = WebSocket.CONNECTING;
     this.protocol = '';
 
